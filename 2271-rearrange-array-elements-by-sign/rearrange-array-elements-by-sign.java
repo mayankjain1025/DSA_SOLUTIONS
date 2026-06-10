@@ -2,6 +2,9 @@ class Solution {
     public int[] rearrangeArray(int[] nums) {
         int i=0;
         int j=1;
+        if(nums.length<2){
+            return nums;
+        }
         int [] arr= new int [nums.length];
         for(int k = 0; k<nums.length; k++){
             if (nums[k]>0){
