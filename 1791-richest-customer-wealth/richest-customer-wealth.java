@@ -8,9 +8,10 @@ class Solution {
             int sum = 0;
             for(int j = 0; j<jn;j++){
                 sum=sum+accounts[i][j];
-                if(sum>max){
-                    max=sum;
-                }
+                max= Math.max(max,sum);
+                // if(sum>max){
+                //     max=sum;
+                // }
             }
         }
         return max;
