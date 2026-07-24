@@ -2,33 +2,22 @@ import java.util.HashMap;
 
 class Solution {
     public int subarraysDivByK(int[] nums, int k) {
-        // Map stores: (remainder, frequency)
-        HashMap<Integer, Integer> map = new HashMap<>();
-        
-        // Base Case: A remainder of 0 has occurred once before starting
+        int n=nums.length;
+        HashMap <Integer,Integer>map= new HashMap<>();
+        int cps=0;
+        int count=0;
         map.put(0, 1);
-        
-        int currentPrefixSum = 0;
-        int count = 0;
-        
-        for (int num : nums) {
-            currentPrefixSum += num;
-            
-            // Calculate remainder and normalize negative remainders
-            int remainder = currentPrefixSum % k;
-            if (remainder < 0) {
-                remainder += k;
+        for(int i=0;i<n;i++){
+            cps+=nums[i];
+            int reminder=cps%k;
+            if(reminder<0){
+                reminder+=k;
             }
-            
-            // If this remainder was seen before, add its frequency to total count
-            if (map.containsKey(remainder)) {
-                count += map.get(remainder);
+            if(map.containsKey(reminder)){
+                count+=map.get(reminder);
             }
-            
-            // Store or update remainder frequency
-            map.put(remainder, map.getOrDefault(remainder, 0) + 1);
+            map.put(reminder,map.getOrDefault(reminder ,0)+1);
         }
-        
         return count;
     }
 }
