@@ -13,15 +13,11 @@ class Solution {
     };
     public List<String> letterCombinations(String digits) {
         List<String> ans = new ArrayList<>();
-
         if (digits.length() == 0)
             return ans;
-
         backtrack(digits, 0, new StringBuilder(), ans);
-
         return ans;
     }
-
     private void backtrack(String digits, int index,
                            StringBuilder current,
                            List<String> ans) {
